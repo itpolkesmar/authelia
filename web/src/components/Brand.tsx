@@ -20,14 +20,16 @@ const Brand = function (props: Props) {
 
     return (
         <Grid container size={{ xs: 12 }} alignItems="center" justifyContent="center">
-            <Grid size={{ xs: 4 }}>
+            <Grid size={{ xs: 6 }}>
                 <Link
-                    href={atob(String.fromCharCode(...EncodedURL))}
+                    // href={atob(String.fromCharCode(...EncodedURL))}
+                    href="https://poltekkes-smg.ac.id/"
                     target="_blank"
                     underline="hover"
                     className={classes.links}
                 >
-                    {translate("Powered by {{authelia}}", { authelia: atob(String.fromCharCode(...EncodedName)) })}
+                    {/* {translate("Powered by {{authelia}}", { authelia: atob(String.fromCharCode(...EncodedName)) })} */}
+                    Poltekkes Kemenkes Semarang
                 </Link>
             </Grid>
             {privacyEnabled ? (

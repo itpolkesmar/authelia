@@ -127,7 +127,8 @@ const useStyles = makeStyles()((theme: Theme) => ({
     subtitle: {},
     icon: {
         margin: theme.spacing(),
-        width: "64px",
+        // width: "64px",
+        height: "48px",
         fill: theme.custom.icon,
     },
     body: {

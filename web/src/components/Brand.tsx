@@ -3,17 +3,17 @@ import React, { Fragment } from "react";
 import { Divider, Link, Theme } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import Grid from "@mui/material/Grid";
-import { useTranslation } from "react-i18next";
+// import { useTranslation } from "react-i18next";
 import { makeStyles } from "tss-react/mui";
 
 import PrivacyPolicyLink from "@components/PrivacyPolicyLink";
-import { EncodedName, EncodedURL } from "@constants/constants";
+// import { EncodedName, EncodedURL } from "@constants/constants";
 import { getPrivacyPolicyEnabled } from "@utils/Configuration";
 
 export interface Props {}
 
 const Brand = function (props: Props) {
-    const { t: translate } = useTranslation();
+    // const { t: translate } = useTranslation();
 
     const { classes } = useStyles();
     const privacyEnabled = getPrivacyPolicyEnabled();

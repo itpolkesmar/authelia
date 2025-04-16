@@ -4,6 +4,7 @@ import { Close, Dashboard, Menu, Security, SystemSecurityUpdateGood } from "@mui
 import {
     AppBar,
     Box,
+    Button,
     Divider,
     List,
     ListItem,
@@ -17,7 +18,7 @@ import {
 import IconButton from "@mui/material/IconButton";
 import { useTranslation } from "react-i18next";
 
-import { EncodedName } from "@constants/constants";
+import { DashboardApps, EncodedName } from "@constants/constants";
 import {
     IndexRoute,
     SecuritySubRoute,
@@ -99,6 +100,9 @@ const SettingsLayout = function (props: Props) {
                     >
                         {translate("Settings")}
                     </Typography>
+                    <Button color="inherit" href={DashboardApps}>
+                        Dashboard Apps
+                    </Button>
                 </Toolbar>
             </AppBar>
             <Box component={"nav"}>

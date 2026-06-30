@@ -3,29 +3,32 @@ import { Fragment } from "react";
 import { Divider, Link } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import Grid from "@mui/material/Grid";
-import { useTranslation } from "react-i18next";
+// import { useTranslation } from "react-i18next";
+import { makeStyles } from "tss-react/mui";
 
 import PrivacyPolicyLink from "@components/PrivacyPolicyLink";
-import { EncodedName, EncodedURL } from "@constants/constants";
+// import { EncodedName, EncodedURL } from "@constants/constants";
 import { getPrivacyPolicyEnabled } from "@utils/Configuration";
 
 export interface Props {}
 
-const Brand = function () {
-    const { t: translate } = useTranslation();
+const Brand = function (props: Props) {
+    // const { t: translate } = useTranslation();
 
     const privacyEnabled = getPrivacyPolicyEnabled();
 
     return (
         <Grid container size={{ xs: 12 }} alignItems="center" justifyContent="center">
-            <Grid size={{ xs: 4 }}>
+            <Grid size={{ xs: 12 }}>
                 <Link
-                    href={atob(String.fromCodePoint(...EncodedURL))}
+                    // href={atob(String.fromCharCode(...EncodedURL))}
+                    href="https://it.poltekkes-smg.ac.id"
                     target="_blank"
                     underline="hover"
                     sx={{ color: grey[500], fontSize: "0.7rem" }}
                 >
-                    {translate("Powered by {{authelia}}", { authelia: atob(String.fromCodePoint(...EncodedName)) })}
+                    {/* {translate("Powered by {{authelia}}", { authelia: atob(String.fromCharCode(...EncodedName)) })} */}
+                    <strong>Unit IT</strong> &middot; Poltekkes Kemenkes Semarang
                 </Link>
             </Grid>
             {privacyEnabled ? (

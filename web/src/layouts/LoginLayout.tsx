@@ -129,4 +129,28 @@ const LoginLayout = function (props: Props) {
     );
 };
 
+const useStyles = makeStyles()((theme: Theme) => ({
+    root: {
+        minHeight: "90vh",
+        textAlign: "center",
+    },
+    rootContainer: {
+        paddingLeft: 32,
+        paddingRight: 32,
+    },
+    title: {},
+    subtitle: {},
+    icon: {
+        margin: theme.spacing(),
+        // width: "64px",
+        height: "48px",
+        fill: theme.custom.icon,
+    },
+    body: {
+        marginTop: theme.spacing(),
+        paddingTop: theme.spacing(),
+        paddingBottom: theme.spacing(),
+    },
+}));
+
 export default LoginLayout;

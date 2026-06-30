@@ -1,6 +1,4 @@
-import React from "react";
-
-import { Box, Button, Theme, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
 import SuccessIcon from "@components/SuccessIcon";
@@ -15,21 +13,11 @@ const Authenticated = function () {
                 <SuccessIcon />
             </Box>
             <Typography>{translate("Authenticated")}</Typography>
-            <Button className={classes.appButon} href={DashboardApps} variant="contained">
+            <Button sx={{ marginTop: (theme) => theme.spacing(2) }} href={DashboardApps} variant="contained">
                 Dashboard Apps
             </Button>
         </Box>
     );
 };
-
-const useStyles = makeStyles()((theme: Theme) => ({
-    iconContainer: {
-        marginBottom: theme.spacing(2),
-        flex: "0 0 100%",
-    },
-    appButon: {
-        marginTop: theme.spacing(2),
-    },
-}));
 
 export default Authenticated;

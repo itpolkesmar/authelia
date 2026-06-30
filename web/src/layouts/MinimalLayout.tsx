@@ -27,12 +27,12 @@ const MinimalLayout = function (props: Props) {
             component={"img"}
             src="./static/media/logo.png"
             alt="Logo"
-            sx={{ fill: (theme) => theme.custom.icon, margin: (theme) => theme.spacing(), width: "64px" }}
+            sx={{ fill: (theme) => theme.custom.icon, margin: (theme) => theme.spacing(), width: "240px" }}
         />
     ) : (
         <Box
             component={UserSvg}
-            sx={{ fill: (theme) => theme.custom.icon, margin: (theme) => theme.spacing(), width: "64px" }}
+            sx={{ fill: (theme) => theme.custom.icon, margin: (theme) => theme.spacing(), width: "240px" }}
         />
     );
 
@@ -76,27 +76,5 @@ const MinimalLayout = function (props: Props) {
         </Box>
     );
 };
-
-const useStyles = makeStyles()((theme: Theme) => ({
-    root: {
-        minHeight: "90vh",
-        textAlign: "center",
-    },
-    rootContainer: {
-        paddingLeft: 32,
-        paddingRight: 32,
-    },
-    icon: {
-        margin: theme.spacing(),
-        // width: "64px",
-        height: "48px",
-        fill: theme.custom.icon,
-    },
-    body: {
-        marginTop: theme.spacing(),
-        paddingTop: theme.spacing(),
-        paddingBottom: theme.spacing(),
-    },
-}));
 
 export default MinimalLayout;

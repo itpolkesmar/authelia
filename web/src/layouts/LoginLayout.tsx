@@ -1,6 +1,6 @@
 import { ReactNode, useCallback, useEffect, useState } from "react";
 
-import { Box, Breakpoint, Container } from "@mui/material";
+import { Alert, Box, Breakpoint, Container, Link } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import { useTranslation } from "react-i18next";
 
@@ -110,6 +110,20 @@ const LoginLayout = function (props: Props) {
                                 />
                             </Grid>
                         ) : null}
+                        <Grid size={{ xs: 12 }} sx={{ mt: 2, textAlign: "left" }}>
+                            <Alert severity="info" variant="outlined">
+                                Belum tahu cara login? Lihat{" "}
+                                <Link
+                                    href="https://s.kemkes.go.id/panduan-sso"
+                                    target="_blank"
+                                    rel="noopener"
+                                    fontWeight="bold"
+                                >
+                                    Panduan SSO
+                                </Link>
+                                .
+                            </Alert>
+                        </Grid>
                         <Grid
                             size={{ xs: 12 }}
                             sx={{

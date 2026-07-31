@@ -1,12 +1,36 @@
-{
-  "Base":"{{ .Base }}",
-  "DuoSelfEnrollment":"{{ .DuoSelfEnrollment }}",
-  "LogoOverride":"{{ .LogoOverride }}",
-  "PasskeyLogin":"{{ .PasskeyLogin }}",
-  "RememberMe":"{{ .RememberMe }}",
-  "ResetPassword":"{{ .ResetPassword }}",
-  "ResetPasswordCustomURL":"{{ .ResetPasswordCustomURL }}",
-  "PrivacyPolicyURL":"{{ .PrivacyPolicyURL }}",
-  "PrivacyPolicyAccept":"{{ .PrivacyPolicyAccept }}",
-  "Theme":"{{ .Theme }}"
-}
+<!doctype html>
+<html lang="{{ .Language }}">
+    <head>
+        <base href="{{ .BaseURL }}" />
+        <meta property="csp-nonce" content="{{ .CSPNonce }}" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
+        <link rel="manifest" href="./manifest.json" />
+        <link rel="icon" href="./favicon.ico" />
+        <title></title>
+      <script type="module" crossorigin src="./static/js/index.BHBZ2EGQ.js"></script>
+      <link rel="modulepreload" crossorigin href="./static/js/jsx-runtime.n5LQ9ujS.js">
+      <link rel="modulepreload" crossorigin href="./static/js/Configuration.Bjz7E82P.js">
+      <link rel="modulepreload" crossorigin href="./static/js/mui.Grow.WDgQcaDy.js">
+      <link rel="modulepreload" crossorigin href="./static/js/axios.BGS2Ypxl.js">
+      <link rel="modulepreload" crossorigin href="./static/js/Client.BQF7DO8A.js">
+      <link rel="stylesheet" crossorigin href="./static/css/index.D60y36hi.css">
+    </head>
+
+    <body
+        data-basepath="{{ .Base }}"
+        data-duoselfenrollment="{{ .DuoSelfEnrollment }}"
+        data-logooverride="{{ .LogoOverride }}"
+        data-privacypolicyurl="{{ .PrivacyPolicyURL }}"
+        data-privacypolicyaccept="{{ .PrivacyPolicyAccept }}"
+        data-passkeylogin="{{ .PasskeyLogin }}"
+        data-rememberme="{{ .RememberMe }}"
+        data-resetpassword="{{ .ResetPassword }}"
+        data-resetpasswordcustomurl="{{ .ResetPasswordCustomURL }}"
+        data-theme="{{ .Theme }}"
+    >
+        <noscript>You need to enable JavaScript to run this app.</noscript>
+        <div id="root"></div>
+    </body>
+</html>

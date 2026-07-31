@@ -147,6 +147,7 @@ func (p *LDAPUserProvider) GetDetails(username string) (details *UserDetails, er
 		Username:    profile.Username,
 		DisplayName: profile.DisplayName,
 		Emails:      profile.Emails,
+		MailAlias:   profile.MailAlias,
 		Groups:      groups,
 	}, nil
 }
@@ -195,6 +196,7 @@ func (p *LDAPUserProvider) GetDetailsExtended(username string) (details *UserDet
 			Username:    profile.Username,
 			DisplayName: profile.DisplayName,
 			Emails:      profile.Emails,
+			MailAlias:   profile.MailAlias,
 			Groups:      groups,
 		},
 		Extra: profile.Extra,
@@ -469,9 +471,13 @@ func (p *LDAPUserProvider) getUserProfile(client LDAPExtendedClient, username st
 }
 
 func (p *LDAPUserProvider) getUserProfileResultToProfile(username string, entry *ldap.Entry) (profile *ldapUserProfile, err error) {
+	mailAliasValues := getValuesFromEntry(entry, p.config.Attributes.MailAlias)
+	p.log.Infof("getUserProfileResultToProfile: user=%s mail_alias_attr=%q mailalias_values=%v", username, p.config.Attributes.MailAlias, mailAliasValues)
+
 	userProfile := ldapUserProfile{
 		DN:          entry.DN,
 		Emails:      getValuesFromEntry(entry, p.config.Attributes.Mail),
+		MailAlias:   mailAliasValues,
 		DisplayName: getValueFromEntry(entry, p.config.Attributes.DisplayName),
 		MemberOf:    getValuesFromEntry(entry, p.config.Attributes.MemberOf),
 	}

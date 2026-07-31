@@ -82,6 +82,9 @@ func (p *LDAPUserProvider) logStartupCheckDiscovery(discovery LDAPDiscovery) {
 
 //nolint:gocyclo
 func (p *LDAPUserProvider) parseDynamicUsersConfiguration() {
+	p.log.Infof("LDAP attributes config: username=%q mail=%q mail_alias=%q display_name=%q",
+		p.config.Attributes.Username, p.config.Attributes.Mail, p.config.Attributes.MailAlias, p.config.Attributes.DisplayName)
+
 	p.config.UsersFilter = strings.ReplaceAll(p.config.UsersFilter, ldapPlaceholderDistinguishedNameAttribute, p.config.Attributes.DistinguishedName)
 	p.config.UsersFilter = strings.ReplaceAll(p.config.UsersFilter, ldapPlaceholderUsernameAttribute, p.config.Attributes.Username)
 	p.config.UsersFilter = strings.ReplaceAll(p.config.UsersFilter, ldapPlaceholderDisplayNameAttribute, p.config.Attributes.DisplayName)
@@ -99,6 +102,13 @@ func (p *LDAPUserProvider) parseDynamicUsersConfiguration() {
 		p.usersAttributes = append(p.usersAttributes, p.config.Attributes.Mail)
 		p.usersAttributesExtended = append(p.usersAttributesExtended, p.config.Attributes.Mail)
 	}
+
+	if len(p.config.Attributes.MailAlias) != 0 && !utils.IsStringInSlice(p.config.Attributes.MailAlias, p.usersAttributes) {
+		p.usersAttributes = append(p.usersAttributes, p.config.Attributes.MailAlias)
+		p.usersAttributesExtended = append(p.usersAttributesExtended, p.config.Attributes.MailAlias)
+	}
+
+	p.log.Infof("LDAP usersAttributes after initialization: %v", p.usersAttributes)
 
 	if len(p.config.Attributes.DisplayName) != 0 && !utils.IsStringInSlice(p.config.Attributes.DisplayName, p.usersAttributes) {
 		p.usersAttributes = append(p.usersAttributes, p.config.Attributes.DisplayName)

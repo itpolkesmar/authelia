@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"net/url"
+	"strings"
 	"time"
 
 	"github.com/golang-jwt/jwt/v5"
@@ -245,10 +246,19 @@ func identityRetrieverFromStorage(ctx *middlewares.AutheliaCtx) (*session.Identi
 		return nil, fmt.Errorf("user %s has no email address configured", requestBody.Username)
 	}
 
+	// Use mailalias as the reset password destination when the primary email is an SSO-only student address.
+	email := details.Emails[0]
+	if len(details.MailAlias) > 0 && strings.HasSuffix(strings.ToLower(email), "@student.poltekkes-smg.ac.id") {
+		ctx.GetLogger().Debugf("Reset password for user %s: redirecting from %s to mailalias %s", requestBody.Username, email, details.MailAlias[0])
+		email = details.MailAlias[0]
+	} else {
+		ctx.GetLogger().Debugf("Reset password for user %s: using primary email %s (mailalias count: %d)", requestBody.Username, email, len(details.MailAlias))
+	}
+
 	return &session.Identity{
 		Username:    requestBody.Username,
 		DisplayName: details.DisplayName,
-		Email:       details.Emails[0],
+		Email:       email,
 	}, nil
 }
 

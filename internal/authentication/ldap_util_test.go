@@ -8,6 +8,16 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+func TestGetValuesFromEntryCaseInsensitive(t *testing.T) {
+	entry := &ldap.Entry{Attributes: []*ldap.EntryAttribute{{
+		Name:   "mailAlias",
+		Values: []string{"p199010110301@poltekkes-smg.ac.id", "user@example.com"},
+	}}}
+
+	assert.Equal(t, "p199010110301@poltekkes-smg.ac.id", getValueFromEntry(entry, "mailalias"))
+	assert.Equal(t, []string{"p199010110301@poltekkes-smg.ac.id", "user@example.com"}, getValuesFromEntry(entry, "mailalias"))
+}
+
 func TestLDAPGetDiscoveryFromLDAPEntryNil(t *testing.T) {
 	discovery := ldapGetDiscoveryFromLDAPEntry(nil)
 	assert.Len(t, discovery.Extensions.OIDs, 0)

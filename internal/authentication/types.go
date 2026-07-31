@@ -20,6 +20,7 @@ type UserDetails struct {
 	Username    string
 	DisplayName string
 	Emails      []string
+	MailAlias   []string
 	Groups      []string
 }
 
@@ -211,6 +212,7 @@ type UserDetailsAddress struct {
 type ldapUserProfile struct {
 	DN          string
 	Emails      []string
+	MailAlias   []string
 	DisplayName string
 	Username    string
 	MemberOf    []string

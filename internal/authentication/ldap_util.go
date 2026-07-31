@@ -163,7 +163,10 @@ func getValueFromEntry(entry *ldap.Entry, attribute string) string {
 		return ""
 	}
 
-	return entry.GetAttributeValue(attribute)
+	// LDAP attribute descriptions are case-insensitive. LDAP servers may return
+	// their canonical attribute name (for example "mailAlias") even when the
+	// configured attribute uses a different casing (for example "mailalias").
+	return entry.GetEqualFoldAttributeValue(attribute)
 }
 
 func getValuesFromEntry(entry *ldap.Entry, attribute string) []string {
@@ -171,7 +174,7 @@ func getValuesFromEntry(entry *ldap.Entry, attribute string) []string {
 		return nil
 	}
 
-	return entry.GetAttributeValues(attribute)
+	return entry.GetEqualFoldAttributeValues(attribute)
 }
 
 func getExtraValueFromEntry(entry *ldap.Entry, attribute string, properties schema.AuthenticationBackendLDAPAttributesAttribute) (value any, err error) {

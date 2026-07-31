@@ -77,6 +77,7 @@ var Keys = []string{
 	"authentication_backend.ldap.attributes.locale",
 	"authentication_backend.ldap.attributes.locality",
 	"authentication_backend.ldap.attributes.mail",
+	"authentication_backend.ldap.attributes.mail_alias",
 	"authentication_backend.ldap.attributes.member_of",
 	"authentication_backend.ldap.attributes.middle_name",
 	"authentication_backend.ldap.attributes.nickname",
